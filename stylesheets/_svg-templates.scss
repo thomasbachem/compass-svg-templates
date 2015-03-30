@@ -1,0 +1,12 @@
+$svg-templates-cache-buster: auto !default;
+$svg-templates-minify:       1    !default;
+
+@mixin svg-template-background($path, $variables...) {
+  background-image: svg-template-png($path, keywords($variables));
+  background-image: svg-template($path, keywords($variables));
+}
+
+@mixin svg-template-background-inline($path, $variables...) {
+  background-image: svg-template-png-inline($path, keywords($variables));
+  background-image: svg-template-inline($path, keywords($variables));
+}
