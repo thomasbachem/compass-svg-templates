@@ -1,7 +1,7 @@
 Compass SVG Templates
 ===========================================================================================
 
-Use variables in SVG files to modify CSS images on-the-fly
+Use variables in SVGs to modify images on-the-fly
 -------------------------------------------------------------------------------------------
 
 This [Compass](http://compass-style.org) extension can read SVG files, replace variables
