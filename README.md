@@ -97,7 +97,8 @@ The shipped mixins do automatically include a PNG fallback.
 ```scss
 @mixin svg-template-background($path, $variables...) {
   background-image: svg-template-png($path, keywords($variables));
-  background-image: svg-template($path, keywords($variables));
+  // Use a second background-image so IE <= 8 won't parse this property
+  background-image: svg-template($path, keywords($variables)), none;
 }
 ```
 
@@ -106,7 +107,8 @@ The shipped mixins do automatically include a PNG fallback.
 ```scss
 @mixin svg-template-background-inline($path, $variables...) {
   background-image: svg-template-png-inline($path, keywords($variables));
-  background-image: svg-template-inline($path, keywords($variables));
+  // Use a second background-image so IE <= 8 won't parse this property
+  background-image: svg-template-inline($path, keywords($variables)), none;
 }
 ```
 
