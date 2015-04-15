@@ -146,7 +146,7 @@ private
     begin
       Magick::Image.from_blob(data).first
     rescue
-      raise Compass::Error, "SVG file #{real_path} cannot be processed – probably invalid?"
+      raise Compass::Error, "SVG file #{real_path} cannot be processed - probably invalid?"
     end
   end
 
