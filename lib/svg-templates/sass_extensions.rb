@@ -144,7 +144,9 @@ private
       raise Compass::Error, "Please install RMagick to make use of the PNG rendering functionality."
     end
     begin
-      Magick::Image.from_blob(data).first
+      img = Magick::Image.from_blob(data).first
+      # Strip and suppress any color profiles (gamma correction etc.)
+      img.strip!
     rescue
       raise Compass::Error, "SVG file #{real_path} cannot be processed - probably invalid?"
     end
