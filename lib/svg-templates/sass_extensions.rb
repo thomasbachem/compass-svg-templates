@@ -115,7 +115,8 @@ private
 
     # Replace variables
     variables.each do |key, value|
-      data = data.gsub('#{$' + key.to_s + '}', value.to_s)
+      escaped_key = Regexp.escape(key.to_s)
+      data = data.gsub(/#\{\$#{escaped_key}(?:\|\|(.+?))?\}/, value.to_s)
     end
 
     # Replace undefined variables by their defaults or strip them entirely
