@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "compass-svg-templates"
-  spec.version       = "1.0.2"
+  spec.version       = "1.0.3"
   spec.authors       = ["Thomas Bachem"]
   spec.email         = ["mail@thomasbachem.com"]
   spec.summary       = "Use variables in SVG files to modify CSS images on-the-fly"
