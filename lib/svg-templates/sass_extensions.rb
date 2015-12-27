@@ -26,10 +26,13 @@ module Sass::Script::Functions
     svg_filename = Pathname.new(real_path).basename.sub_ext('').to_s
     hash         = Digest::MD5.hexdigest(data)[0, 5]
     svg_basename = "#{css_filename}-#{svg_filename}.#{hash}.svg"
+    svg_pathname = css_basepath + '/' + svg_basename
 
-    # Write SVG image file
-    File.write(css_basepath + '/' + svg_basename, minify_svg_data(data))
-
+    unless File.exist?(svg_pathname)
+      # Write SVG image file
+      File.write(svg_pathname, minify_svg_data(data))
+    end
+    
     url = handle_cache_buster(svg_basename, hash)
     unquoted_string("url('#{url}')")
   end
@@ -61,10 +64,13 @@ module Sass::Script::Functions
     svg_filename = Pathname.new(real_path).basename.sub_ext('').to_s
     hash         = Digest::MD5.hexdigest(data)[0, 5]
     png_basename = "#{css_filename}-#{svg_filename}.#{hash}.png"
+    png_pathname = css_basepath + '/' + png_basename
 
-    # Render SVG as PNG image file using ImageMagick
-    img = load_svg_image_data(data)
-    img.write(css_basepath + '/' + png_basename)
+    unless File.exist?(png_pathname)
+      # Render SVG as PNG image file using ImageMagick
+      img = load_svg_image_data(data)
+      img.write(png_pathname)
+    end
     
     url = handle_cache_buster(png_basename, hash)
     unquoted_string("url('#{url}')")
